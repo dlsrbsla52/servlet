@@ -50,4 +50,25 @@ class MemberRepositoryTest {
         assertThat(members).contains(member1, member2);
 
     }
+
+    @Test
+    public void 진짜테스트(){
+        String str = "abacabcd";
+        boolean[] seen = new boolean[256];
+        System.out.print(calculFn(str, str.length()-1,seen));
+    }
+
+    public String calculFn(String str, int index, boolean[] booleans){
+        if(index < 0) return "";
+        char c = str.charAt(index);
+        String result = calculFn(str, index-1, booleans);
+
+        if(!booleans[c]){
+            booleans[c] = true;
+            return c + result;
+        }
+
+
+        return result;
+    }
 }
